@@ -683,7 +683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1116362995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,7 +702,7 @@ MonoBehaviour:
   inputDialog: {fileID: 439239425}
   rewardItemsDialog: {fileID: 1651604938}
   loadingObject: {fileID: 1778298261}
-  loginScene: LoginSceneWebService
+  loginScene: LoginScene_GooglePlayLogin
   manageScene: ManageScene
   battleScene: BattleScene
   isRememberLogin: 1
@@ -1715,7 +1715,7 @@ Prefab:
     - target: {fileID: 224020205445978524, guid: 6a9fd3e6dc40b30479a711d14d8796ef,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224020205445978524, guid: 6a9fd3e6dc40b30479a711d14d8796ef,
         type: 2}
@@ -1725,7 +1725,7 @@ Prefab:
     - target: {fileID: 224825897564630352, guid: 6a9fd3e6dc40b30479a711d14d8796ef,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224825897564630352, guid: 6a9fd3e6dc40b30479a711d14d8796ef,
         type: 2}
@@ -1735,7 +1735,7 @@ Prefab:
     - target: {fileID: 224825897564630352, guid: 6a9fd3e6dc40b30479a711d14d8796ef,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9fd3e6dc40b30479a711d14d8796ef, type: 2}
