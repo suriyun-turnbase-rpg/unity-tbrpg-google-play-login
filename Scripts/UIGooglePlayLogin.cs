@@ -16,7 +16,7 @@ public class UIGooglePlayLogin : MonoBehaviour
     public StringEvent onLoginFail;
     public bool debugLogEnabled;
 
-    private void Awake()
+    private void Start()
     {
 #if UNITY_ANDROID
         var builder = new PlayGamesClientConfiguration.Builder()
