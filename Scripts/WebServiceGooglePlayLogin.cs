@@ -21,6 +21,6 @@ public class WebServiceGooglePlayLogin : BaseGooglePlayLoginService
         webServiceClient.PostAsDecodedJSON<PlayerResult>("/login-with-google-play", (www, result) =>
         {
             onFinish(result);
-        }, JsonConvert.SerializeObject(dict));
+        }, dict);
     }
 }
