@@ -18,7 +18,7 @@ public class WebServiceGooglePlayLogin : BaseGooglePlayLoginService
     {
         var dict = new Dictionary<string, object>();
         dict.Add("idToken", idToken);
-        webServiceClient.PostAsDecodedJSON<PlayerResult>("/login-with-google-play", (www, result) =>
+        webServiceClient.PostAsDecodedJSON<PlayerResult>("login-with-google-play", (www, result) =>
         {
             onFinish(result);
         }, dict);
