@@ -17,18 +17,6 @@ public class UIGooglePlayLogin : MonoBehaviour
     private void Start()
     {
 #if UNITY_ANDROID
-        var builder = new PlayGamesClientConfiguration.Builder()
-            // requests the email address of the player be available.
-            // Will bring up a prompt for consent.
-            .RequestEmail()
-            // requests a server auth code be generated so it can be passed to an
-            //  associated back end server application and exchanged for an OAuth token.
-            .RequestServerAuthCode(false)
-            // requests an ID token be generated.  This OAuth token can be used to
-            //  identify the player to other services such as Firebase.
-            .RequestIdToken();
-        var config = builder.Build();
-        PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.DebugLogEnabled = debugLogEnabled;
 #endif
     }
@@ -36,22 +24,27 @@ public class UIGooglePlayLogin : MonoBehaviour
     public void OnClickGooglePlayLogin()
     {
 #if UNITY_ANDROID
-        PlayGamesPlatform.Instance.SignOut();
-        PlayGamesPlatform.Instance.Authenticate((success, message) => {
-            if (success)
+        PlayGamesPlatform.Instance.Authenticate((status) =>
+        {
+            switch (status)
             {
-                // When google play login success, send login request to server
-                var idToken = PlayGamesPlatform.Instance.GetIdToken();
-                RequestGooglePlayLogin(idToken);
-            }
-            else
-            {
-                // Show error message
-                onLoginFail.Invoke(message);
+                case SignInStatus.InternalError:
+                    onLoginFail.Invoke("Internal Errror, cannot Login with Google Play.");
+                    break;
+                case SignInStatus.Canceled:
+                    onLoginFail.Invoke("Login with Google Play was cancelled.");
+                    break;
+                default:
+                    // When google play login success, send login request to server
+                    PlayGamesPlatform.Instance.RequestServerSideAccess(false, (idToken) =>
+                    {
+                        RequestGooglePlayLogin(idToken);
+                    });
+                    break;
             }
         });
 #else
-            Debug.Log("Only Android can login with Google Play");
+        Debug.Log("Only Android can login with Google Play");
 #endif
     }
 
